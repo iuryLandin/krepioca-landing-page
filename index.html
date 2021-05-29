@@ -90,13 +90,13 @@
                 <div class="col-6 col-xs-12">
                     <div class="slogan">
                         <h1 class="left-to-right play-on-scroll">
-                            Krepioca
+                            <img src="assets/KREPIOCA-COLOR.png" style="width: 80%;" />
                         </h1>
                         <p class="left-to-right play-on-scroll delay-2">
                             Há mais de 4 anos no mercado, uma empresa jovem e dinâmica que surgiu da necessidade de trazer ao mercado um lanche rápido e gostoso que também atenda às necessidades do consumidor que gosta de qualidade.
                         </p>
                         <div class="left-to-right play-on-scroll delay-4">
-                            <button>
+                            <button onClick="document.getElementById('contact').scrollIntoView();">
                                 Fale conosco
                             </button>
                         </div>
@@ -350,7 +350,8 @@
                     <div class="review-wrap zoom play-on-scroll delay-2">
                         <div class="review-content">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt corrupti dolores ratione voluptatibus quidem explicabo.
+                                A Krepioca me surpreendeu desde o primeiro momento, com a praticidade e rapidez no atendimento. Mas principalmente pela qualidade do lanche que é diferenciada! Meu preferido é o crepe, que tem uma massa fininha e saborosa, alé, de ser super recheado!
+                                Nota-se que é feito com carinho e com produtos de qualidade!
                             </p>
                             <div class="review-img bg-img" style="background-image: url(assets/hyndyanara.jpg);">
                             </div>
@@ -375,7 +376,8 @@
                         <div class="review-wrap active">
                             <div class="review-content">
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt corrupti dolores ratione voluptatibus quidem explicabo.
+                                    Meu nome é Eva Hilda, moro em Palmas–TO, tenho 57 anos e sou cliente assídua da Krepioca!.<br> Eu comi o primeiro crepe assim que abriu a primeira loja e foi a mor à primeira mordida...kkk...e fiquei viciada, nunca
+                                    tinha comido nada igual e a cada dia que passsa parece que fica ainda melhor... sabores e consistência da massa e recheio.<br> Sou fã número 1 e incondicional da Krepioca! ❤
                                 </p>
                                 <div class="review-img bg-img" style="background-image: url(assets/evahilda.png);">
                                 </div>
@@ -400,7 +402,7 @@
                     <div class="review-wrap zoom play-on-scroll delay-4">
                         <div class="review-content">
                             <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, labore nisi non molestias, minus laboriosam nostrum impedit iure facilis odio unde quia ad sunt corrupti dolores ratione voluptatibus quidem explicabo.
+                                Depois de hybta a excelente textura dos crepes, a qualidade dos produtos usados e a agilidade no atendimento, sempre digo de boca cheia, soi fã de carteirinha da Krepioca!
                             </p>
                             <div class="review-img bg-img" style="background-image: url(assets/tiagorm1.jpg);">
                             </div>
@@ -425,7 +427,7 @@
     </section>
     <!-- END TESTIMONIAL SECTION -->
     <!-- FOOTER SECTION -->
-    <div class="footer bg-img" style="background-image: url(assets/Screenshot_10.png);">
+    <div class="footer bg-img" style="background-image: url(assets/Screenshot_10.png);" id="contact">
         <section class="footer bg-img" style=" background-color: rgba(0, 0, 0, 0.7); width: 100%; height: 100vh;">
             <div class="container">
                 <div class="row">
@@ -473,6 +475,29 @@
         </section>
     </div>
     <!-- END FOOTER SECTION -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        function sendEmail() {
+            var email = document.getElementById('input_email').value;
+            var to = "iurylandin07@gmail.com";
+            var subject = "Lead interessado em franquia";
+            var msg = `<b>Novo Lead interessado em franquia.</b> <br>Dados do Formulário:<br>E-mail: ${email}`;
+            $.ajax({
+                url: "https://agenciapremiere.com.br/sendcontact.php",
+                type: "post",
+                data: `to=${to}&msg=${msg}&subject=${subject}`,
+                success: function(response) {
+                    swal("Sucesso!", "Seu e-mail foi enviado com sucesso! Em breve entraremos em contato com você", "success");
+
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+    </script>
 
     <script src="index.js"></script>
 </body>
